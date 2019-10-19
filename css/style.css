@@ -1,0 +1,945 @@
+
+body {
+    color: #777;
+    font-family: "Myriad Pro", "Arial Narrow";
+    overflow-x: hidden;
+}
+
+a{
+    color:  inherit;
+    text-decoration: none; 
+    opacity: 0.85;
+}
+
+a:hover{
+    text-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+::-webkit-scrollbar {
+      width: 15px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+      background-color: #343333;
+} /* the new scrollbar will have a flat appearance with the set background color */
+ 
+::-webkit-scrollbar-thumb {
+      background-color: #232222; 
+      border-left: 1px solid #242222;
+      border-top: 1px solid #242222;
+      border-bottom: 1px solid #242222;
+} /* this will style the thumb, ignoring the track */
+ 
+::-webkit-scrollbar-button {
+      background-color: #131212;
+      border-left: 1px solid color;
+      border-bottom: 1px solid color;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+ 
+::-webkit-scrollbar-corner {
+      background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+/*
+The maiin `<div>`;
+*/
+#main{
+    background-image: url('../images/background.jpg');
+    background-repeat: repeat;
+    background-color: #fff;
+}
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    left: 4.5%;
+    max-width: 90%;
+    position: relative;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    line-height: 1.6em;
+
+}
+
+.content .div{
+    padding: 10px;
+    width: 98.5%;
+    height: auto;
+    border-radius:  6px;
+    border: 1px solid #777777;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.content .div2{
+    padding: 10px;
+    width: 97.5%;
+    height: auto;
+    border-radius:  6px;
+    border: 1px solid #777777;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.content .input{
+    padding: 5.5px;
+    width: 30%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+
+
+.header {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     border-bottom: 1px solid #eee;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .header h2 {
+        font-weight: 300;
+        color: #ccc;
+        padding: 0;
+        margin-top: 0;
+    }
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #191818;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+    /*
+    All anchors inside the menu should be styled like this.
+    */
+    #menu a {
+        color: #fff;
+        border: none;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+
+    /*
+    Remove all background/borders, since we are applying them to #menu.
+    */
+     #menu .pure-menu,
+     #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }     
+
+    #menu-acs li a{
+        border: none;
+        background: #121111;
+    }
+
+    /*
+    Add that light border to separate items into groups.
+    */
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        border-top: 1px solid #333;
+    }
+        /*
+        Change color of the anchor links on hover/focus.
+        */
+    #menu .pure-menu .hovermenu li a,
+    #menu .pure-menu .hovermenu li a{
+        background: #232222;
+    }
+
+    #menu .pure-menu li a:hover,
+    #menu .pure-menu li a:focus {
+        background: #333;
+    }
+
+    #menu .pure-menu #admin:hover,
+    #menu .pure-menu #admin:focus {
+        background: #650A0A;
+    }    
+
+    #menu .pure-menu #admin-sub,
+    #menu .pure-menu #admin-sub {
+        background: #F00000;
+    }  
+
+    #menu .pure-menu #admin-sub:hover,
+    #menu .pure-menu #admin-sub:focus {
+        background: #F00000;
+    }
+  
+    #menu .pure-menu #supervisor,
+    #menu .pure-menu #supervisor {
+        background: #FF5100;
+    }  
+
+    #menu .pure-menu #supervisor:hover,
+    #menu .pure-menu #supervisor:focus {
+        background: #E55918;
+    }
+
+    #menu .pure-menu #supervisor-sub,
+    #menu .pure-menu #supervisor-sub {
+        background: #D57130;
+    }  
+
+    #menu .pure-menu #supervisor-sub:hover,
+    #menu .pure-menu #supervisor-sub:focus {
+        background: #C67541;
+    }
+  
+
+    /*
+    This styles the selected menu item `<li>`.
+    */
+    #menu .pure-menu-selected,
+    #menu .pure-menu-heading {
+        background: #1f8dd6;
+    }
+        /*
+        This styles a link within a selected menu item `<li>`.
+        */
+        #menu .pure-menu-selected a {
+            color: #fff;
+        }
+
+    /*
+    This styles the menu heading.
+    */
+    #menu .pure-menu-heading {
+        font-size: 110%;
+        color: #fff;
+        margin: 0;
+    }
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    background: #000;
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+        .menu-link span:before,
+        .menu-link span:after {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+
+        .menu-link span:after {
+            margin-top: 0.6em;
+        }
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}
+
+.mensagem{
+    background-color: red;
+    border: 2px solid white;
+    position: fixed;
+    color: white;
+    text-align: center;
+    top: 1%;
+    right: 1%;
+    width: 30%;
+    height: 15%;
+    opacity: 0.80;  
+    border: 2px solid green;
+    border-radius: 9px;
+    z-index: 9999;
+}
+
+.attdados{
+    background-image: url('../images/bg_orange.bmp');
+    background-color: #FF6600;
+    color: black;
+    width: 98%;
+    padding: 10px;
+    border-radius:6px;
+    border-top: 1px solid #000;
+    border-right: 4px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 4px solid #000;
+    margin-bottom: 10px;
+}
+
+.attdados a{
+    font-weight: bold;
+}
+
+.content .divit{
+    background-image: url('../images/bg_blue.bmp');
+    text-align: center;
+    color: black;
+    width: 98%;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius:6px;
+    border-top: 1px solid #000;
+    border-right: 4px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 4px solid #000;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    opacity: 0.90;
+}
+
+.content .divit:hover{
+    background-image: none;
+    background-color: #4E85B3;
+    cursor: pointer;
+        text-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+
+.btn {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 24px;
+    width: 20%;
+    padding: 1%;
+    margin-right: 1%;
+    text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.btn-green {
+    background: green;
+    background-image: -webkit-linear-gradient(top, green, #003300);
+    background-image: -moz-linear-gradient(top, green, #003300);
+    background-image: -ms-linear-gradient(top, green, #003300);
+    background-image: -o-linear-gradient(top, green, #003300);
+    background-image: linear-gradient(to bottom, green, #003300);
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 24px;
+    width: 20%;
+    padding: 1%;
+    margin-right: 1%;
+    text-decoration: none;
+}
+
+.btn-green:hover {
+    background: green;
+    background-image: -webkit-linear-gradient(top, green, #003300);
+    background-image: -moz-linear-gradient(top, green, #003300);
+    background-image: -ms-linear-gradient(top, green, #003300);
+    background-image: -o-linear-gradient(top, green, #003300);
+    background-image: linear-gradient(to bottom, green, #003300);
+    text-decoration: none;
+}
+
+
+.btn-small {
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 9px;
+    color: #ffffff;
+    font-size: 24px;
+    width: 20%;
+    padding: 0.1%;
+    margin-right: 1%;
+    text-decoration: none;
+    float: right;
+    opacity: 0.90;
+}
+
+.btn-small:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.btn-small2 {
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 9px;
+    color: #ffffff;
+    font-size: 24px;
+    width: 20%;
+    padding: 0.1%;
+    margin-right: 1%;
+    text-decoration: none;
+    opacity: 0.90;
+}
+
+.btn-small2:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+
+.red{
+    background: red;
+}
+
+.green{
+    background: green;
+}
+
+.orange{
+    background: orange;
+}
+
+.blue{
+    background: blue;
+}
+
+.grey{
+    background: grey;
+}
+
+.pure-menu-link b{
+    background-color: red;
+    padding: 1% 4% 1% 3%;
+    border: 1px solid #D20000;
+    border-radius: 100%;
+    float:  right;
+    margin-top: -1%;
+    margin-right: 8%;
+}
+
+.btn-off {
+    background: #618CA7;
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 24px;
+    width: 20%;
+    padding: 1%;
+    margin-right: 1%;
+    text-decoration: none;
+}
+.table{border-collapse:collapse;border-spacing:0;width:100%;display:table;}
+.table{border:1px solid #ccc;width: 100%;}
+.table tr{border-bottom:1px solid #ddd}
+.table tr:nth-child(odd){background-color:#fff}
+.table tr:nth-child(even){background-color:#f1f1f1}
+.table td,.table th{padding:8px 8px;display:table-cell;text-align:left;vertical-align:top}
+.table td a{color: green;font-weight: bold;}
+.table td a.excluir{color: red;}
+.table th b{color: red;font-size: 24px;text-shadow: 0 0 9px red;}
+.table th h9{color: black;font-weight: bold;}
+h9{color: black;font-weight: bold;}
+.table .reduz{width: 20%;line-height: -10px;}
+.table th:first-child,.table td:first-child{padding-left:16px;}
+.w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#f44336!important}
+.w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#1F8DD6!important}
+.table .input{
+    width: auto;
+}
+.table .input0{
+    padding: 5.5px;
+    width: 4%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+.table .input2{
+    padding: 5.5px;
+    width: 35%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+.table .input3{
+    padding: 5.5px;
+    width: 20%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+.table .input4{
+    padding: 5.5px;
+    width: 80%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+.table .input5{
+    padding: 5.5px;
+    width: 90%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+.table .input6{
+    padding: 5.5px;
+    width: 62%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #777777;
+}
+
+#form-margin{
+    margin-bottom: ;
+}
+
+#dddreduce{
+    text-align: center;
+    width: 4%;
+}
+
+.pure-img-responsive{
+    width: 99%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* alert container */
+#pageAlerts { position:fixed; top:0;left:0;right:0; width:100%; z-index:9999999999999;  pointer-events:none; }
+
+/* allows alerts to be clicked */
+a.notice[href], a.notice[onclick] {
+pointer-events: all;
+}
+/* basic alert styles */
+a.notice {
+    z-index:99999999999999;
+    display: inline-block;
+    margin:10px auto;
+    padding: 3px 6px 3px 0;
+    font: normal 12px verdana,arial,helvetica,sans-serif;
+    text-align:left;
+    text-decoration: none;
+    color: #D8E3FF;
+
+    -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
+    -webkit-box-shadow: 0 0 4px #000; -moz-box-shadow: 0 0 4px #000; box-shadow: 0 0 4px #000;
+    /* -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -ms-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; */
+}
+
+a.notice:before {
+    margin: 0 4px 0 0;
+    padding: 3px 6px;
+    font-style: normal; 
+    font-weight: bold;
+    color: #FFF;
+    content: "Announcement";
+}   
+
+a.notice:hover {
+    cursor:pointer;
+    color:#fff;
+}
+
+/* red */
+a.notice.red-alert {
+    background-color: #A80000;
+    border: 2px solid #850000;
+}
+a.notice.red-alert:before {  
+    background-color: #5C0000;
+}
+/* green */
+a.notice.green-alert {
+    background-color: #117004;
+    border: 2px solid #3B8329;
+}
+a.notice.green-alert:hover {
+    border-color: #53A53F;
+}
+a.notice.green-alert:before {
+    background-color: #1E5F23;
+}
+/* teal */
+a.notice.teal-alert {
+    background-color: #04705A;
+    border: 2px solid #00D5A9;
+}
+a.notice.teal-alert:hover {
+    border-color: #4CC7AE;
+}
+a.notice.teal-alert:before {
+    background-color: #00A281;
+}   
+/* gray */
+a.notice.gray-alert {
+    background-color: #696969;
+    border: 2px solid #757575;
+}
+a.notice.gray-alert:hover {
+    border-color: #7C7C7C;
+}
+a.notice.gray-alert:before {
+    background-color: #474747;
+}   
+
+
+a.notice.fa-a:before {
+    font-family: FontAwesome;
+    font-size: 14px;
+    padding: 3px 15px;
+    font-weight: normal;
+}
+/* exclamation in triangle */
+a.notice.fa-a.fa-a-exclamation:before {
+    content: "\f071" !important;
+}
+/* open folder */
+a.notice.fa-a.fa-a-folder:before {
+    content: "\f114" !important;
+}
+/* external link */
+a.notice.fa-a.fa-a-link:before {
+    content: "\f08e" !important;
+}
+/* heart */
+a.notice.fa-a.fa-a-heart:before {
+    content: "\f08a" !important;
+}
+/* info circle */
+a.notice.fa-a.fa-a-info:before {
+    content: "\f05a" !important;
+}
+/* lock */
+a.notice.fa-a.fa-a-lock:before {
+    content: "\f023" !important;
+}
+/* map marker */
+a.notice.fa-a.fa-a-mapm:before {
+    content: "\f041" !important;
+}
+/* star */
+a.notice.fa-a.fa-a-star:before {
+    content: "\f006" !important;
+}
+/* x */
+a.notice.fa-a.fa-a-x:before {
+    content: "\f00d" !important;
+}
+/* trash */
+a.notice.fa-a.fa-a-trash:before {
+    content: "\f014" !important;
+}
+/* file uploaded */
+a.notice.fa-a.fa-a-fupl:before {
+    content: "\f093" !important;
+}
+/* volume icons */
+/* mute */
+a.notice.fa-a.fa-a-v-mute:before {
+    content: "\f026" !important;
+}
+/* vol up */
+a.notice.fa-a.fa-a-v-up:before {
+    content: "\f027" !important;
+}
+/* max vol */
+a.notice.fa-a.fa-a-v-max:before {
+    content: "\f028" !important;
+}
+
+#notifications{
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    width: 15%;
+    position: fixed;
+    padding: 1%;
+    z-index: 99;
+    bottom: 0;
+    right: 0;
+}
+
+#notifications .notify{
+    background-color: #003300;
+    padding: 4%;
+    width: auto;
+    border-radius: 4px;
+    border: 1px solid black;
+    text-align: center;
+    position: relative;
+    opacity: 0.9;
+}
+
+#notifications .notify:hover{
+    opacity: 1;
+}
+
+.bstext{
+    width: 81%;
+    color:#FFF;
+    padding:10px;    
+    border-radius: 4px;
+}
+
+.bssuccess{
+    background-color:#AA5CB8;
+}
+
+.bsalert{
+    background-color:#5BA5DE;
+}
+
+.bswarning{
+    background-color:#C619CC;
+}
+
+.bsupdate{
+    background-color:#1D89E5;
+}
+
+.bsinfo{
+    background-color:#18A8AA;
+}
+
+.bserror{
+    background-color: #FF1717;
+    box-shadow: 1px 1px 5px red;
+    border: 2px solid #6C2927;
+    height: auto;
+}
+
+.headertext{
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size:16px;
+    padding:8px 10px;
+    margin:-10px;
+    margin-bottom: 5px;
+}
+
+.headertext > .fa{
+    margin-right:5px;
+}
+
+.bloggerspice {
+    overflow: hidden;
+    float: right;
+}
+
+@-webkit-keyframes spaceboots {
+      0% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+     10% { -webkit-transform: translate(1px, 1px) rotate(0.2deg); }
+     20% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+     30% { -webkit-transform: translate(1px, 1px) rotate(-0.2deg); }
+     40% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+     50% { -webkit-transform: translate(1px, 1px) rotate(0.2deg); }
+     60% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+     70% { -webkit-transform: translate(1px, 1px) rotate(-0.2deg); }
+     80% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+     90% { -webkit-transform: translate(1px, 1px) rotate(0.2deg); }
+    100% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.img {
+    -webkit-animation-name: spaceboots;
+    -webkit-animation-duration: 2s;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+.img {
+    display:inline-block
+}
+
+.spam-small{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.spam{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.submit{
+    background-color: #1F8DD6;
+    font-weight: bold;
+    color:  white;
+    text-transform: uppercase;
+    padding: 2px;
+    width: 30%;
+    border-radius:  3px;
+    margin-right: 10px;
+    border: 1px solid #1279CC;
+}
+
+.submit:hover{
+    background-color: #1279CC;
+}
+
+.submit2{
+    background-color: #1F8DD6;
+    font-weight: bold;
+    color:  white;
+    text-transform: uppercase;
+    padding: 1%;
+    width: 30%;
+    float: right;
+    border-radius:  3px;
+    border: 1px solid #1279CC;
+}
+
+.submit2:hover{
+    background-color: #1279CC;
+}
